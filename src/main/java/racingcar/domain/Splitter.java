@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Splitter {
@@ -11,8 +12,27 @@ public class Splitter {
     }
 
     public List<String> split(String str) {
-
-    return null;
+        validateInputString(str);
+        List<String> names = trimming(str.split(","));
+        validatePlayerName(names);
+    return names;
     }
 
+    private List<String> trimming(String[] arr) {
+        List<String> result = new ArrayList<>();
+        for (String string : arr) {
+            result.add(string.trim());
+        }
+        return result;
+    }
+
+    private void validateInputString(String str) {
+        validator.validateEmptyString(str);
+        validator.validateInputOnePlayer(str);
+    }
+
+    private void validatePlayerName(List<String> list) {
+        validator.validateInputEmptyPlayer(list);
+        validator.validateInputLongNamePlayer(list);
+    }
 }

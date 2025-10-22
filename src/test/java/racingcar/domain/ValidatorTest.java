@@ -35,6 +35,12 @@ class ValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> validator.validateInputLongNamePlayer(list));
     }
 
+    @Test
+    public void givenNotEnglishNameWhenValidateThenException() {
+        List<String> list = List.of("longName","__+","^");
+        assertThrows(IllegalArgumentException.class, () -> validator.validateNotEnglishNamePlayer(list));
+
+    }
 
 
 

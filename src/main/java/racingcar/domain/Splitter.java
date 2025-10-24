@@ -7,8 +7,8 @@ public class Splitter {
 
     private final Validator validator;
 
-    public Splitter(Validator validator) {
-        this.validator = validator;
+    public Splitter() {
+        this.validator = new Validator();
     }
 
     public List<String> split(String str) {
@@ -29,6 +29,7 @@ public class Splitter {
     private void validateInputString(String str) {
         validator.validateEmptyString(str);
         validator.validateInputOnePlayer(str);
+        validator.validateNotEndWithComma(str);
     }
 
     private void validatePlayerName(List<String> list) {

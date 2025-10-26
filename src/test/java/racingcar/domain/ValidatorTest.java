@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -25,23 +25,28 @@ class ValidatorTest {
 
     @Test
     public void givenEmptyPlayerWhenValidateThenException() {
-        List<String> list = List.of("pobi","","woni");
+        List<String> list = List.of("pobi", "", "woni");
         assertThrows(IllegalArgumentException.class, () -> validator.validateInputEmptyPlayer(list));
     }
 
     @Test
     public void givenLongNameWhenValidateThenException() {
-        List<String> list = List.of("longName","pobi","woni");
+        List<String> list = List.of("longName", "pobi", "woni");
         assertThrows(IllegalArgumentException.class, () -> validator.validateInputLongNamePlayer(list));
     }
 
     @Test
     public void givenNotEnglishNameWhenValidateThenException() {
-        List<String> list = List.of("longName","__+","^");
+        List<String> list = List.of("longName", "__+", "^");
         assertThrows(IllegalArgumentException.class, () -> validator.validateNotEnglishNamePlayer(list));
 
     }
 
+    @Test
+    public void givenDuplicatedNameWhenValidateThenException() {
+        List<String> list = List.of("pobi", "pobi", "woni");
+        assertThrows(IllegalArgumentException.class, () -> validator.validateDuplicatedNamePlayer(list));
+    }
 
 
 }

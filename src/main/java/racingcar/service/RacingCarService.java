@@ -1,6 +1,8 @@
 package racingcar.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
@@ -20,24 +22,46 @@ public class RacingCarService {
 
     public GameWinnerDto play(GameInitInputDto dto) {
         createCar(dto.getCarNameList());
-        printResult(playGame(dto.getRepeatCount()));
-        return null;
+        return playGame(dto.getRepeatCount());
     }
 
-    private void createCar(List<String> names) {
+    void createCar(List<String> names) {
         carList = carFactory.createCars(names);
     }
 
-    private List<Car> playGame(int count) {
-
-
-
-        return null;
+    GameWinnerDto playGame(int count) {
+        for (int i = 0; i < count; i++) {
+            playTurn();
+        }
+        List<Car> winnerList = getWinnerList();
+        return new GameWinnerDto(winnerList);
     }
 
-    private void printResult(List<Car> winners) {
+    void playTurn() {
+        for (Car car : carList) {
+            if (goOrStop()) {
+                car.addScore();
+            }
+        }
+        System.out.println();
+    }
 
+    boolean goOrStop() {
+        int randNum = Randoms.pickNumberInRange(0, 9);
+        return randNum >= 4;
+    }
 
+    List<Car> getWinnerList() {
+        List<Car> winner = new ArrayList<>();
+        Collections.sort(carList);
+        int winnerScore = carList.getFirst().getScore();
+        for (Car car : carList) {
+            if (car.getScore() < winnerScore) {
+                break;
+            }
+            winner.add(car);
+        }
+        return winner;
     }
 
 }

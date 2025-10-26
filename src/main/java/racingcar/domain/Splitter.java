@@ -15,7 +15,7 @@ public class Splitter {
         validateInputString(str);
         List<String> names = trimming(str.split(","));
         validatePlayerName(names);
-    return names;
+        return names;
     }
 
     private List<String> trimming(String[] arr) {
@@ -35,5 +35,6 @@ public class Splitter {
     private void validatePlayerName(List<String> list) {
         validator.validateInputEmptyPlayer(list);
         validator.validateInputLongNamePlayer(list);
+        //TODO: 중복된 사용자 이름시 검증
     }
 }

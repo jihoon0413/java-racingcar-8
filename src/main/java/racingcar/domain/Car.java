@@ -4,9 +4,17 @@ public class Car implements Comparable<Car> {
     private final String name;
     private int score;
 
-    public Car(String name) {
+    private Car(String name, int score) {
         this.name = name;
         this.score = 0;
+    }
+
+    public static Car of(String name) {
+        return new Car(name, 0);
+    }
+
+    public static Car of(String name, int score) {
+        return new Car(name, score);
     }
 
     public String getName() {
@@ -23,15 +31,6 @@ public class Car implements Comparable<Car> {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public void printScore() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.name).append(" : ");
-        for (int i = 0; i < score; i++) {
-            sb.append("-");
-        }
-        System.out.println(sb);
     }
 
     @Override

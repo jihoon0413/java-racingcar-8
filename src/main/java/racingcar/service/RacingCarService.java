@@ -8,15 +8,18 @@ import racingcar.domain.Car;
 import racingcar.domain.CarFactory;
 import racingcar.dto.GameInitInputDto;
 import racingcar.dto.GameWinnerDto;
+import racingcar.view.RoundResultView;
 
 public class RacingCarService {
 
     private final CarFactory carFactory;
+    private final RoundResultView roundResultView;
 
     private static List<Car> carList = new ArrayList<>();
 
     public RacingCarService() {
         this.carFactory = new CarFactory();
+        this.roundResultView = new RoundResultView();
     }
 
 
@@ -42,9 +45,8 @@ public class RacingCarService {
             if (goOrStop()) {
                 car.addScore();
             }
-            car.printScore();
         }
-        System.out.println();
+        roundResultView.printRoundResult(carList);
     }
 
     boolean goOrStop() {

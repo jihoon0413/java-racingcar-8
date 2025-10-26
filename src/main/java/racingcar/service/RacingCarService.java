@@ -42,6 +42,7 @@ public class RacingCarService {
             if (goOrStop()) {
                 car.addScore();
             }
+            car.printScore();
         }
         System.out.println();
     }

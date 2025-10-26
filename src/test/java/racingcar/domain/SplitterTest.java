@@ -23,12 +23,13 @@ class SplitterTest {
         String str2 = "pobi";
         String str3 = "pobi,,jun";
         String str4 = "longName,pobi,woni";
+        String str5 = "pobi,pobi";
 
         assertThrows(IllegalArgumentException.class, () -> splitter.split(str1));
         assertThrows(IllegalArgumentException.class, () -> splitter.split(str2));
         assertThrows(IllegalArgumentException.class, () -> splitter.split(str3));
         assertThrows(IllegalArgumentException.class, () -> splitter.split(str4));
-
+        assertThrows(IllegalArgumentException.class, () -> splitter.split(str5));
     }
 
 }

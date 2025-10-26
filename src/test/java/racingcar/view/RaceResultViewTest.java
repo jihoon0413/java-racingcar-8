@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.dto.GameWinnerDto;
 
-class OutputViewTest {
+class RaceResultViewTest {
 
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;

@@ -6,7 +6,7 @@ public class Car implements Comparable<Car> {
 
     private Car(String name, int score) {
         this.name = name;
-        this.score = 0;
+        this.score = score;
     }
 
     public static Car of(String name) {

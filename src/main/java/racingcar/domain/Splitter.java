@@ -35,6 +35,6 @@ public class Splitter {
     private void validatePlayerName(List<String> list) {
         validator.validateInputEmptyPlayer(list);
         validator.validateInputLongNamePlayer(list);
-        //TODO: 중복된 사용자 이름시 검증
+        validator.validateDuplicatedNamePlayer(list);
     }
 }

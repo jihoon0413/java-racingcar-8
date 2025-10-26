@@ -30,10 +30,9 @@ class OutputViewTest {
     public void givenOneWinnerDtoWhenPrintThenOneWinnerOutput() {
         List<Car> winnerList = List.of(createTempCar("pobi"));
         GameWinnerDto result = new GameWinnerDto(winnerList);
-        OutputView outputView = new OutputView();
+        RaceResultView raceResultView = new RaceResultView();
 
-        outputView.printWinners(result);
-
+        raceResultView.printWinners(result);
         String output = outputStream.toString().trim();
 
         assertEquals("최종 우승자 : pobi", output);
@@ -43,17 +42,16 @@ class OutputViewTest {
     public void givenMultiWinnerDtoWhenPrintThenMultiWinnerOutput() {
         List<Car> winnerList = List.of(createTempCar("pobi"), createTempCar("woni"));
         GameWinnerDto result = new GameWinnerDto(winnerList);
-        OutputView outputView = new OutputView();
+        RaceResultView outputView = new RaceResultView();
 
         outputView.printWinners(result);
-
         String output = outputStream.toString().trim();
 
         assertEquals("최종 우승자 : pobi, woni", output);
     }
 
     private Car createTempCar(String name) {
-        return new Car(name);
+        return Car.of(name);
     }
 
 }

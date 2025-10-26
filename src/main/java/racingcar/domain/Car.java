@@ -29,10 +29,6 @@ public class Car implements Comparable<Car> {
         score++;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     @Override
     public int compareTo(Car o) {
         return o.score - this.score;

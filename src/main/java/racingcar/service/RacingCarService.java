@@ -15,14 +15,13 @@ public class RacingCarService {
     private final CarFactory carFactory;
     private final RoundResultView roundResultView;
 
-    private static List<Car> carList = new ArrayList<>();
+    private static List<Car> carList;
 
     public RacingCarService() {
         this.carFactory = new CarFactory();
         this.roundResultView = new RoundResultView();
     }
-
-
+    
     public GameWinnerDto play(GameInitInputDto dto) {
         createCar(dto.getCarNameList());
         return playGame(dto.getRepeatCount());
@@ -41,11 +40,7 @@ public class RacingCarService {
     }
 
     void playTurn() {
-        for (Car car : carList) {
-            if (goOrStop()) {
-                car.addScore();
-            }
-        }
+        carList.stream().filter(car -> goOrStop()).forEach(Car::addScore);
         roundResultView.printRoundResult(carList);
     }
 

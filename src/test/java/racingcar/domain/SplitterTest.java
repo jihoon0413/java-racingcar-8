@@ -8,14 +8,13 @@ import org.junit.jupiter.api.Test;
 
 class SplitterTest {
 
-    Validator validator = new Validator();
-    Splitter splitter = new Splitter(validator);
+    Splitter splitter = new Splitter();
 
     @Test
     public void givenNormalStringWhenSplitThenList() {
         String str = "pobi,woni,jun";
 
-        assertEquals(List.of("pobi","woni","jun"), splitter.split(str));
+        assertEquals(List.of("pobi", "woni", "jun"), splitter.split(str));
     }
 
     @Test

@@ -32,7 +32,6 @@ class RoundResultViewTest {
         List<Car> roundResult = createResult();
 
         roundResultView.printRoundResult(roundResult);
-
         String output = outputStream.toString().trim();
 
         assertThat(output).contains("pobi : ------");
